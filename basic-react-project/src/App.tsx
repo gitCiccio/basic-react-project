@@ -6,7 +6,7 @@ import Checkout from "./pages/Checkout.tsx";
 import Navbar from "./components/Navbar.tsx";
 import {AuthProvider} from "./context/AuthContext.tsx";
 import ProductDetails from "./pages/ProductDetails.tsx";
-import CartProvider from "./context/CartContext.tsx";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
 

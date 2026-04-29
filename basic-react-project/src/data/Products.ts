@@ -44,7 +44,7 @@ const products = [
             "RGB backlit mechanical keyboard with Cherry MX switches. Perfect for gaming and typing enthusiasts.",
     },
     {
-        id: "5",
+        id: 5,
         name: "USB-C Hub",
         price: 39.99,
         image:
