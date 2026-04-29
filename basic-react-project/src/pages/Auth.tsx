@@ -21,7 +21,7 @@ function Auth() {
 
     const navigate = useNavigate();
 
-    const { signUp, user, logout } = useAuth();
+    const { signUp } = useAuth();
 
     function onSubmit(data: AuthFormValues) {
         const result = signUp(data.email, data.password);

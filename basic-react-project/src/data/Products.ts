@@ -1,5 +1,5 @@
 export type Product = {
-    id: string;
+    id: number;
     name: string;
     price: number;
     image: string;
@@ -8,7 +8,7 @@ export type Product = {
 
 const products = [
     {
-        id: "1",
+        id: 1,
         name: "Wireless Headphones",
         price: 99.99,
         image:
@@ -17,7 +17,7 @@ const products = [
             "Premium wireless headphones with noise cancellation and 30-hour battery life. Perfect for music lovers and professionals.",
     },
     {
-        id: "2",
+        id: 2,
         name: "Smart Watch",
         price: 249.99,
         image:
@@ -26,7 +26,7 @@ const products = [
             "Feature-rich smartwatch with fitness tracking, heart rate monitor, and smartphone notifications. Water-resistant design.",
     },
     {
-        id: "3",
+        id: 3,
         name: "Laptop Stand",
         price: 49.99,
         image:
@@ -35,7 +35,7 @@ const products = [
             "Ergonomic aluminum laptop stand that improves posture and workspace organization. Adjustable height and angle.",
     },
     {
-        id: "4",
+        id: 4,
         name: "Mechanical Keyboard",
         price: 129.99,
         image:
@@ -53,7 +53,7 @@ const products = [
             "Multi-port USB-C hub with HDMI, USB 3.0, and SD card reader. Expand your laptop connectivity.",
     },
     {
-        id: "6",
+        id: 6,
         name: "Wireless Mouse",
         price: 29.99,
         image:
@@ -62,7 +62,7 @@ const products = [
             "Ergonomic wireless mouse with precision tracking and long battery life. Comfortable for extended use.",
     },
     {
-        id: "7",
+        id: 7,
         name: "Monitor Stand",
         price: 79.99,
         image:
@@ -71,7 +71,7 @@ const products = [
             "Dual monitor stand with adjustable height and tilt. Frees up desk space and improves ergonomics.",
     },
     {
-        id: "8",
+        id: 8,
         name: "Webcam HD",
         price: 89.99,
         image:
@@ -85,6 +85,6 @@ export function getProducts() {
     return products;
 }
 
-export function getProductById(id: string) {
-    return products.find((p) => p.id === id);
+export function getProductById(id: number) {
+    return products.find((p) => p.id === (id));
 }

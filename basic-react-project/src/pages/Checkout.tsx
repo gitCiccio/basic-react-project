@@ -1,29 +1,44 @@
-import {useCart} from "../context/CartContext.tsx";
+import { useCart } from "../context/CartContext";
 
 function Checkout() {
-    const {getCartItemsWithProduct, updateQuantity, removeFromCart, getTotal, clear} = useCart();
+    const {
+        getCartItemsWithProduct,
+        updateQuantity,
+        removeFromCart,
+        getTotal,
+        clear,
+    } = useCart();
+
     const cartItems = getCartItemsWithProduct();
     const total = getTotal();
+
     function placeOrder(): void {
+        // Qui potresti fare una chiamata API / salvataggio ordine
         clear();
     }
+
     return (
         <>
-            <div className={"page"}>
-                <div className={"container"}>
-                    <h1 className={"page-title"}>checkout</h1>
-                    <div className={"checkout-container"}>
-                        <div className={"checkout-items"}>
+            <div className="page">
+                <div className="container">
+                    <h1 className="page-title">checkout</h1>
+                    <div className="checkout-container">
+                        <div className="checkout-items">
                             <h2 className="checkout-section-title">Order Summary</h2>
                             {cartItems.map((item) => (
-                                <div className="checkout-item" key={item.cartProduct.id}>
+                                <div
+                                    className="checkout-item"
+                                    key={item.cartProduct.id}
+                                >
                                     <img
                                         src={item.cartProduct.image}
                                         alt={item.cartProduct.name}
                                         className="checkout-item-image"
                                     />
                                     <div className="checkout-item-details">
-                                        <h3 className="checkout-item-name">{item.cartProduct.name}</h3>
+                                        <h3 className="checkout-item-name">
+                                            {item.cartProduct.name}
+                                        </h3>
                                         <p className="checkout-item-price">
                                             ${item.cartProduct.price} each
                                         </p>
@@ -32,25 +47,42 @@ function Checkout() {
                                         <div className="quantity-controls">
                                             <button
                                                 className="quantity-btn"
-                                                onClick={() => updateQuantity(item.cartProduct.id, item.cartQuantity - 1)}
+                                                onClick={() =>
+                                                    updateQuantity(
+                                                        item.cartProduct.id,
+                                                        item.cartQuantity - 1
+                                                    )
+                                                }
                                             >
                                                 -
                                             </button>
-                                            <span className="quantity-value">{item.cartQuantity}</span>
+                                            <span className="quantity-value">
+                        {item.cartQuantity}
+                      </span>
                                             <button
                                                 className="quantity-btn"
-                                                onClick={() => updateQuantity(item.cartProduct.id, item.cartQuantity + 1)}
+                                                onClick={() =>
+                                                    updateQuantity(
+                                                        item.cartProduct.id,
+                                                        item.cartQuantity + 1
+                                                    )
+                                                }
                                             >
                                                 +
                                             </button>
                                         </div>
 
                                         <p className="checkout-item-total">
-                                            ${(item.cartProduct.price * item.cartQuantity).toFixed(2)}
+                                            $
+                                            {(
+                                                item.cartProduct.price * item.cartQuantity
+                                            ).toFixed(2)}
                                         </p>
                                         <button
                                             className="btn btn-secondary btn-small"
-                                            onClick={() => removeFromCart(item.cartProduct.id)}
+                                            onClick={() =>
+                                                removeFromCart(item.cartProduct.id)
+                                            }
                                         >
                                             Remove
                                         </button>
@@ -63,7 +95,9 @@ function Checkout() {
                             <h2 className="checkout-section-title">Total</h2>
                             <div className="checkout-total">
                                 <p className="checkout-total-label">Subtotal:</p>
-                                <p className="checkout-total-value">${total.toFixed(2)}</p>
+                                <p className="checkout-total-value">
+                                    ${total.toFixed(2)}
+                                </p>
                             </div>
                             <div className="checkout-total">
                                 <p className="checkout-total-label">Total:</p>

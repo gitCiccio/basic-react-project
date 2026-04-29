@@ -10,9 +10,9 @@ type CartContextType = {
     cartItems: CartElement[];
     addToCart: (product: Product) => void;
     getCartItemsWithProduct: () => CartElement[];
-    updateQuantity: (productId: string, quantity: number) => void;
+    updateQuantity: (productId: number, quantity: number) => void;
     getTotal: () => number;
-    removeFromCart: (productId: string) => void;
+    removeFromCart: (productId: number) => void;
     clear: () => void;
 };
 
@@ -56,7 +56,7 @@ export function CartProvider({ children }: CartProviderProps) {
             .filter((item): item is CartElement => item !== null);
     }
 
-    function updateQuantity(productId: string, quantity: number) {
+    function updateQuantity(productId: number, quantity: number) {
         if (quantity > 0) {
             setCartItems(
                 cartItems.map((item) =>
@@ -69,9 +69,13 @@ export function CartProvider({ children }: CartProviderProps) {
     }
 
     function getTotal() {
-        return cartItems.reduce((sum: number, item: CartElement) => sum + item.cartProduct.price, 0);
+        return cartItems.reduce(
+            (sum, item) => sum + item.cartProduct.price * item.cartQuantity,
+            0
+        );
     }
-    const removeFromCart = (productId: string) => {
+
+    const removeFromCart = (productId: number) => {
         setCartItems(
             cartItems.filter((item) => item.cartProduct.id !== productId)
         );
